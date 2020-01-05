@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Items</title>
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
+@extends('layouts.app')
+
+@section('content')
+
         <!-- title -->
         <h1>Add a new Item</h1><br>
 
@@ -29,9 +20,19 @@
                 <input type="text" class="form-control" name="item"  placeholder="Add item">
             </div>
         
+            {{-- <div class="form-group">
+                <label>Catagory</label>
+                <input type="text" class="form-control" name="catagory" placeholder="Add item catagory">
+            </div> --}}
             <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Add item name">
+                <label>Catagory</label>
+                <select class="form-control" name='catagory'>
+                  <option value="Modules & Sensors">Modules & Sensors</option>
+                  <option value="Power Supplies">Power Supplies</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Passive Components">Passive Components</option>
+                  <option value="Electromechanical">Electromechanical</option>
+                </select>
             </div>
 
             <div class="form-group">
@@ -40,18 +41,12 @@
             </div>
         
             <div class="form-group">
-                <label>Availability</label>
-                <input type="text" class="form-control" name="availability" placeholder="Add availability">
-            </div>
-        
-            <div class="form-group">
                 <label>Description</label>
                 <textarea class="form-control" name="description" placeholder="Add description"></textarea>
             </div>
             <br>
             <br>
-            <input type="submit" class="btn btn-primary" value="Enter" />
+
+            <input type="submit" class="btn btn-primary" value="Save" />
         </form>
-    </div>
-</body>
-</html>
+ @endsection
