@@ -9,8 +9,8 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="/add">Add items</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -24,8 +24,9 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" action="/search" method="post">
+        {{csrf_field() }}
+        <input class="form-control mr-sm-2" type="text" placeholder="Search items" name = "searchitem" aria-label="Search" required>
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>

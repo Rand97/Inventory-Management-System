@@ -2,8 +2,7 @@
 
 @section('content')
 
-        <!-- title -->
-        <h1>Add a new Item</h1><br>
+        <!-- Add a new Item -->
 
         <!-- validation check -->
         @foreach($errors->all() as $myerror)
@@ -11,42 +10,35 @@
                 {{$myerror}}
             </div>
         @endforeach
-        
-        <!-- items form -->
-        <form method="post" action="/saveItem">
-            {{csrf_field()}}
+        <br>
+        <!-- add item details -->
+        {!! Form::open(['action' => 'ItemController@store' ,'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
-                <label>Item</label>
-                <input type="text" class="form-control" name="item"  placeholder="Add item">
+                {{Form::label('item','Item')}}
+                {{Form::text('item', '' , ['class' => 'form-control','placeholder' => 'Add item'])}}
             </div>
-        
-            {{-- <div class="form-group">
-                <label>Catagory</label>
-                <input type="text" class="form-control" name="catagory" placeholder="Add item catagory">
-            </div> --}}
             <div class="form-group">
-                <label>Catagory</label>
-                <select class="form-control" name='catagory'>
-                  <option value="Modules & Sensors">Modules & Sensors</option>
-                  <option value="Power Supplies">Power Supplies</option>
-                  <option value="Accessories">Accessories</option>
-                  <option value="Passive Components">Passive Components</option>
-                  <option value="Electromechanical">Electromechanical</option>
-                </select>
+                {{Form::label('catagory','Catagory')}}
+                {{Form::select('catagory', [
+                            'Modules & Sensors' => 'Modules & Sensors',
+                            'Power Supplies' => 'Power Supplies',
+                            'Accessories' => 'Accessories',
+                            'Passive Components' => 'Passive Components',
+                            'Electromechanical' => 'Electromechanical'],
+                             null,
+                            ['class' => 'form-control'])}}
             </div>
-
             <div class="form-group">
-                <label>Quality</label>
-                <input type="number" class="form-control" name="quality" placeholder="Add quality">
+                {{Form::label('quality','Quality')}}
+                {{Form::number('quality', '' , ['class' => 'form-control','placeholder' => 'Add quality'])}}
             </div>
-        
             <div class="form-group">
-                <label>Description</label>
-                <textarea class="form-control" name="description" placeholder="Add description"></textarea>
+                {{Form::label('description','Description')}}
+                {{Form::textarea('description', '' , ['class' => 'form-control','placeholder' => 'Add description'])}}
             </div>
-            <br>
-            <br>
-
-            <input type="submit" class="btn btn-primary" value="Save" />
-        </form>
+            <div class="form-group">
+                {{Form::file('cover_image')}}
+            </div>
+            {{Form::submit('Save', ['class'=> 'btn btn-primary'])}}
+        {!! Form::close() !!}
  @endsection
