@@ -43,14 +43,68 @@ class ItemController extends Controller
          $data = array('item'=>$varitem,'catagory'=>$varcatagory,'quality'=>$varquality,'description'=>$vardescription,'created_at'=>$createTime,'cover_image'=>$fileNameToStore);
         
         \DB::table('items')->insert($data);
-        $data = ITEM::orderby('created_at','desc')->get()->paginate(6);
-        $topic = 'Item List';
-        return view('showtable')->with('tableData',$data)->with('topic',$topic);
+        return view('addItems')->withMessage("New Item added Successfully !!!");
         
     }
 
     public function RandomPage($id){
         $requiredRow = ITEM::find($id);
         return view('RandomItem')->with('randomData',$requiredRow);
+    }
+
+    public function deteteItem($id){
+        $requiredRow = ITEM::find($id);
+        $requiredRow->delete();
+        return redirect()->back(); 
+    }
+
+    public function updateItem($id){
+        $requiredRow = ITEM::find($id);
+        return view('updatePage')->with('itemdata',$requiredRow);
+    }
+
+    public function update(Request $request){
+        
+        // validate the inputs
+        $this->validate($request,[
+            'item'=>'required|max:200|min:5',
+            'catagory'=>'required',
+            'quality'=>'required|numeric|min:0',
+            'description'=>'required|max:1000|min:10',
+            'cover_image' => 'image|nullable|max:1999'
+        ]);
+        // Handle File Upload
+        if($request->hasFile('cover_image')){
+            //Get filename with extension
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            //Get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //Get just extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            //added created time to handle duplicates
+
+            //upload the image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        }
+        else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+    
+        $updateTime = new \DateTime();
+
+        $id = $request->input('hidden_id');
+        $requiredRow = ITEM::find($id);
+        $requiredRow->item = $request->input('item');
+        $requiredRow->catagory = $request->input('catagory');
+        $requiredRow->quality = $request->input('quality');
+        $requiredRow->description = $request->input('description');
+        $requiredRow->updated_at = $request->input('created_at');
+        $requiredRow-> cover_image = $fileNameToStore;
+        $requiredRow->save();
+        
+        return redirect()->back()->withMessage('Updated Successfully');
+        
     }
 }

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Request;
 use App\ITEM;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,20 +13,11 @@ use App\ITEM;
 |
 */
 
-Route::get('/', function () {
-    
-    return view('welcome');
-});
 
 
+// add items route
 Route::get('/add', function () {
     return view('addItems');
-});
-
-Route::get('/items', function () {
-    $data = ITEM::orderby('catagory','asc')->orderby('item','asc')->get()->paginate(6);
-    $topic = 'Item List';
-    return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
 
 Route::get('/modules', function () {
@@ -58,20 +50,59 @@ Route::get('/electro', function () {
     return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
 
+Route::get('/other', function () {
+    $data = ITEM::where('catagory','other')->orderby('item','asc')->get()->paginate(6);
+    $topic = 'Other';
+    return view('showtable')->with('tableData',$data)->with('topic',$topic);
+});
+
 Route::post('addItems_store', [
     'uses' => 'ItemController@store'
   ]);
 
+  Route::post('updatePage_updateItem', [
+    'uses' => 'ItemController@updatePage'
+  ]);
+
+Route::post('updatePage_update', [
+    'uses' => 'ItemController@update'
+  ]);
+
+//route for search option 
 Route::post('/search',function(){
     $searchFor = Request::get('searchitem');
-    if($searchFor != ""){
-        $searchResult = ITEM::where('item', 'LIKE' , '%' . $searchFor . '%')->orderBy('item','asc')->get()->paginate(6);
-        if(count($searchResult) > 0){
-            $topic = 'Search Results : ';
-            return view('showtable')->with('tableData',$searchResult)->with('topic',$topic);
-        }
-        return view('welcome')->withMessage("No items found !!!");
+    $id = Session::get('id');
+    $user = User::where('id' ,$id)->first();
+    if(empty($searchFor)){
+        return view('pages.home')->withMessage("Fill the search bar!!!")->with('user',$user);
     }
+    $searchResult = ITEM::where('item', 'LIKE' , '%' . $searchFor . '%')->orderBy('item','asc')->get()->paginate(6);
+    if(count($searchResult) > 0){
+        return view('showtable')->with('tableData',$searchResult)->with('user',$user);
+    }
+    else{
+        return view('pages.home')->withMessage("No items found !!!")->with('user',$user);
+    }
+    
 });
 
 Route::get('/random/{id}','ItemController@RandomPage');
+
+Route::get('/deteteItem/{id}','ItemController@deteteItem');
+
+Route::get('/updateItem/{id}','ItemController@updateItem');
+
+
+Route::get('/', 'pagesController@index')->name('index');
+
+Route::get('/home/{id}', 'pagesController@home')->name('home');
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('/home/{role}', 'pagesController@home')->name('role');
+
+
+//Auth::routes();
+
+Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('login');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');

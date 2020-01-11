@@ -2,12 +2,7 @@
 
 @section('content')
 
-        <!-- successfuly added message -->
-        @if(isset($message))
-            <div class="alert alert-success  text-center">
-                {{ $message }}
-            </div>
-        @endif
+        <!-- Add a new Item -->
 
         <!-- validation check -->
         @foreach($errors->all() as $myerror)
@@ -16,12 +11,15 @@
             </div>
         @endforeach
         <br>
+
+        
         
         <!-- add item details -->
-        {!! Form::open(['action' => 'ItemController@store' ,'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['action' => 'ItemController@update' ,'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+            <input type="hidden" name = "hidden_id" value = "{{$itemdata->id}}">
             <div class="form-group">
                 {{Form::label('item','Item')}}
-                {{Form::text('item', '' , ['class' => 'form-control','placeholder' => 'Add item'])}}
+                {{Form::text('item', $itemdata->item , ['class' => 'form-control','placeholder' => 'Add item'])}}
             </div>
             <div class="form-group">
                 {{Form::label('catagory','Catagory')}}
@@ -36,11 +34,11 @@
             </div>
             <div class="form-group">
                 {{Form::label('quality','Quality')}}
-                {{Form::number('quality', '' , ['class' => 'form-control','placeholder' => 'Add quality'])}}
+                {{Form::number('quality', $itemdata->quality , ['class' => 'form-control','placeholder' => 'Add quality'])}}
             </div>
             <div class="form-group">
                 {{Form::label('description','Description')}}
-                {{Form::textarea('description', '' , ['class' => 'form-control','placeholder' => 'Add description'])}}
+                {{Form::textarea('description', $itemdata->description , ['class' => 'form-control','placeholder' => 'Add description'])}}
             </div>
             <div class="form-group">
                 {{Form::file('cover_image')}}
