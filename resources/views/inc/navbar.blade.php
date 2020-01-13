@@ -1,7 +1,6 @@
 @php
-
-$id = Session::get('id');
-$requiredRow = \App\User::find($id);
+  $id = Session::get('id');
+  $requiredRow = \App\User::find($id);
 @endphp
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     
@@ -15,11 +14,11 @@ $requiredRow = \App\User::find($id);
         <li class="nav-item active">
         <a class="nav-link" href="/home/{{$id}}">Home <span class="sr-only">(current)</span></a>
         </li>
-        @can('isAdmin')
+        @if($requiredRow->role == 'admin')
         <li class="nav-item active">
           <a class="nav-link" href="/add">Add items</a>
         </li>
-       @endcan
+       @endif
       </ul>
       <form class="form-inline my-2 my-lg-0" action="/search" method="post">
         {{csrf_field() }}

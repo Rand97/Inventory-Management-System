@@ -1,9 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<a href="{{route('login')}}" class="btn btn-primary">Primary</button>
-@endsection --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +15,7 @@
     .main{
         width: 100%;
         height: 100vh;
-        background-image: url("bg-5.jpg");
+        background-image: url("/storage/cover_images/bg-2.jpg");
         background-repeat: no-repeat;
         background-size: 100% 100%;
         border-bottom: solid lightblue 7px;
@@ -61,8 +55,8 @@
     }
     .logo{
         border-radius: 50%;
-        width: 60px;
-        height: 60px;
+        width: 90px;
+        height: 90px;
         position: relative;
         top: 20px;
         left: 20px;
@@ -76,7 +70,7 @@
         justify-content: center;
         top: 200px;
         text-align: center;
-        width: 500px;
+        width: 600px;
         
     }
     footer{
@@ -84,24 +78,57 @@
         height: 10vh;
         background-color: rgba(0, 0, 0, 0.8);
     }
-    h2{
+    h1{
         color: white;
         font-family: Arial, Helvetica, sans-serif;
         line-height: 40px;
         
         opacity: 0.6;
     }
+    @media (min-width: 576px) { ... }
+    @media (min-width: 768px) { ... }
+    @media (min-width: 992px) { ... }
+    @media (min-width: 1200px) { ... }
+    @media screen and  (max-width:959px){
+        .main ,.text{
+            width:100%;
+        }
+    }
+    @media screen and (max-width: 750px) {
+        h1{
+            font-size:24px;
+        }
+    }
+    @media screen and (max-width: 650px) {
+        .main , .text{
+            width:100%;
+        }
+        h1{
+            font-size: 18px;
+        }
+        .bt{
+            30%;
+        }
+        .logo{
+            width: 80px;
+            height: 80px;
+        }
+    }
    
 </style>
 <body>
     <div class="main">
         
-        <img src="logo.png" class="logo" alt="">
-        {{-- <a href="{{route('login')}}" class="bt btn btn-primary">Primary</button> --}}
-        <button type="button" class="bt"   href="{{route('login')}}">Sign In</button>
+        /* logo */
+        <a href="{{route('login')}}" class="bt btn btn-primary">Sign In</a>
         <div class="text">
-            <h2>Department of Computer Engineering <br>Faculty of Engineering</h2>
+            <h1>Inventory Management System</h1>
+
         </div>
+
     </div>
+
+   
+    
 </body>
 </html>

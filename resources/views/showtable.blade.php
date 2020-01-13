@@ -1,3 +1,7 @@
+@php
+  $id = Session::get('id');
+  $requiredRow = \App\User::find($id);
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,13 @@
 </head>
 <body>
     @include('inc.navbar')
+    
     <div class="container">
+    @if(isset($message))
+        <div class="alert alert-success  text-center">
+            {{ $message }}
+        </div>
+    @endif
         <div>
         <br>
             @if(count($tableData) == 0)
@@ -29,8 +39,10 @@
                             <th>Item</th>
                             <th>Quantity</th>
                             <th>Availability</th>
-                            <th>Action 1</th>
-                            <th>Action 2</th>
+                            @if($requiredRow->role == 'admin')
+                                <th>Action 1</th>
+                                <th>Action 2</th>
+                            @endif
                             @foreach($tableData as $data)
                             <tr data-href="/random/{{$data->id}}" style="cursor: pointer">
                                 <td>{{$data->catagory}}</td>
@@ -38,17 +50,21 @@
                                 <td>{{$data->quality}}</td>
                                 <td>
                                     @if($data->quality==0)
-                                        Not Available
+                                        <button class="btn btn-danger" style="width: 121px;">Not Available</button>
+                                        
                                     @else
-                                        Available
+                                        <button class="btn btn-primary" style="width: 121px;">Available</button>
+                                        
                                     @endif
                                 </td>
+                                @if($requiredRow->role == 'admin')
                                     <td>
-                                        <a href="/deteteItem/{{$data->id}}" class = "btn btn-danger">Delete</a>
+                                        <a href="/deteteItem/{{$data->id}}" class = "btn btn-warning">Delete</a>
                                     </td>
                                     <td>
                                         <a href="/updateItem/{{$data->id}}" class = "btn btn-success">Update</a>
                                     </td>
+                                @endif
                             </tr>
                             @endforeach
                             
@@ -77,6 +93,7 @@
             @endif
         </div>
     </div>
+    @include('inc.footer')
 </body>
 </html>
         

@@ -17,41 +17,47 @@ use App\User;
 
 // add items route
 Route::get('/add', function () {
+    $userId = Session::get('id');
+    $requiredUserRow = User::find($userId);
+    $role = $requiredUserRow->role;
+    if($role != 'admin'){
+        abort(404,'page not found');
+    }
     return view('addItems');
 });
 
 Route::get('/modules', function () {
-    $data = ITEM::where('catagory','Modules & Sensors')->orderby('item','asc')->get()->paginate(6);
+    $data = ITEM::where('catagory','Modules & Sensors')->orderby('item','asc')->get()->paginate(7);
     $topic = 'Modules & Sensors';
     return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
 
 Route::get('/power', function () {
-    $data = ITEM::where('catagory','Power Supplies')->orderby('item','asc')->get()->paginate(6);
+    $data = ITEM::where('catagory','Power Supplies')->orderby('item','asc')->get()->paginate(7);
     $topic = 'Power Supplies';
     return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
 
 Route::get('/accessories', function () {
-    $data = ITEM::where('catagory','Accessories')->orderby('item','asc')->get()->paginate(6);
+    $data = ITEM::where('catagory','Accessories')->orderby('item','asc')->get()->paginate(7);
     $topic = 'Accessories';
     return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
 
 Route::get('/passive', function () {
-    $data = ITEM::where('catagory','Passive Components')->orderby('item','asc')->get()->paginate(6);
+    $data = ITEM::where('catagory','Passive Components')->orderby('item','asc')->get()->paginate(7);
     $topic = 'Passive Components';
     return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
 
 Route::get('/electro', function () {
-    $data = ITEM::where('catagory','Electromechanical')->orderby('item','asc')->get()->paginate(6);
+    $data = ITEM::where('catagory','Electromechanical')->orderby('item','asc')->get()->paginate(7);
     $topic = 'Electromechanical';
     return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
 
 Route::get('/other', function () {
-    $data = ITEM::where('catagory','other')->orderby('item','asc')->get()->paginate(6);
+    $data = ITEM::where('catagory','Other')->orderby('item','asc')->get()->paginate(7);
     $topic = 'Other';
     return view('showtable')->with('tableData',$data)->with('topic',$topic);
 });
@@ -76,7 +82,7 @@ Route::post('/search',function(){
     if(empty($searchFor)){
         return view('pages.home')->withMessage("Fill the search bar!!!")->with('user',$user);
     }
-    $searchResult = ITEM::where('item', 'LIKE' , '%' . $searchFor . '%')->orderBy('item','asc')->get()->paginate(6);
+    $searchResult = ITEM::where('item', 'LIKE' , '%' . $searchFor . '%')->orderBy('item','asc')->get()->paginate(7);
     if(count($searchResult) > 0){
         return view('showtable')->with('tableData',$searchResult)->with('user',$user);
     }

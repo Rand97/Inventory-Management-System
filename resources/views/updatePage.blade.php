@@ -3,7 +3,11 @@
 @section('content')
 
         <!-- Add a new Item -->
-
+        @if(isset($message))
+            <div class="alert alert-success  text-center">
+                {{ $message }}
+            </div>
+        @endif
         <!-- validation check -->
         @foreach($errors->all() as $myerror)
             <div class="alert alert-danger" role="alert">
@@ -24,6 +28,7 @@
             <div class="form-group">
                 {{Form::label('catagory','Catagory')}}
                 {{Form::select('catagory', [
+                            $itemdata->catagory => $itemdata->catagory,
                             'Modules & Sensors' => 'Modules & Sensors',
                             'Power Supplies' => 'Power Supplies',
                             'Accessories' => 'Accessories',

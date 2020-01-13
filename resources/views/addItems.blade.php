@@ -30,7 +30,8 @@
                             'Power Supplies' => 'Power Supplies',
                             'Accessories' => 'Accessories',
                             'Passive Components' => 'Passive Components',
-                            'Electromechanical' => 'Electromechanical'],
+                            'Electromechanical' => 'Electromechanical',
+                            'Other' => 'Other'],
                              null,
                             ['class' => 'form-control'])}}
             </div>
