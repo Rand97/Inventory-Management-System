@@ -1,9 +1,11 @@
 <html>
     <head>
-        .image {
-            float: left;
-            display:inline-block;
-        }
+        <style>
+            .image {
+                float: left;
+                display:inline-block;
+            }
+         </style>
     </head>
     <body>
         <h1>Inventory Management System</h1>
