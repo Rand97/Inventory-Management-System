@@ -1,5 +1,14 @@
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            .images {
+                display:inline-block;
+                width:100px;
+                height:100px;
+            }
+        </style>
+    </head>
     <body>
         <h1>Inventory Management System</h1>
         <br>
@@ -18,7 +27,33 @@
             <li>migrate files using php artisan migrate</li>
             <li>run the project on your browser</li>
         </ul>
-        <h3>Features</h3><br><br>
+        <h3>Features</h3>
+        <ul>
+            <li>Google Sign In</li>
+            <li>Catogory Selection</li>
+            <li>Search For an Item</li>
+            <li>Table Data Collection</li>
+            <li>Admin and User Access</li>
+            <li>Add item , Delete Item or UpdateItem features</li>
+        </ul>
+        <div class="imagesSection" style="float: left;">
+            <div class="image">
+                <img src = "screenshots/Screenshot (75).png">
+            </div>
+            <div class="image">
+                <img src = "screenshots/Screenshot (76).png">
+            </div>
+            <div class="image">
+                <img src = "screenshots/Screenshot (77).png">
+            </div>
+            <div class="image">
+                <img src = "screenshots/Screenshot (78).png">
+            </div>
+            <div class="image">
+                <img src = "screenshots/Screenshot (79).png">
+            </div>
+        </div>
+        <br><br>
         <h3>contact details</h3>
         <ul>
             <li>nuwan.harshamatrix@gmail.com</li>
