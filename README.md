@@ -1,13 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <style>
-            .images {
-                display:inline-block;
-                width:100px;
-                height:100px;
-            }
-        </style>
+        
     </head>
     <body>
         <h1>Inventory Management System</h1>
@@ -36,19 +30,19 @@
             <li>Admin and User Access</li>
             <li>Add item , Delete Item or UpdateItem features</li>
         </ul>
-        <div class="imagesSection" style="float: left;">
+        <div class="imagesSection">
             <div class="image">
                 <img src = "screenshots/Screenshot (75).png">
-            </div>
+            </div><hr>
             <div class="image">
                 <img src = "screenshots/Screenshot (76).png">
-            </div>
-            <div class="image">
+            </div><hr>
+            <div class=">
                 <img src = "screenshots/Screenshot (77).png">
-            </div>
+            </div><hr>
             <div class="image">
                 <img src = "screenshots/Screenshot (78).png">
-            </div>
+            </div><hr>
             <div class="image">
                 <img src = "screenshots/Screenshot (79).png">
             </div>
