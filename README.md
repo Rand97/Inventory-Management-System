@@ -30,17 +30,7 @@
             <li>Add item , Delete Item or UpdateItem features</li>
         </ul>
         
-                <img src = "screenshots/Screenshot (75).png">
-            <hr>
-           
-                <img src = "screenshots/Screenshot (76).png">
-            <hr>
-            
-                <img src = "screenshots/Screenshot (77).png">
-            <hr>
-                <img src = "screenshots/Screenshot (78).png">
-            <hr>
-                <img src = "screenshots/Screenshot (79).png">
+       
         <br><br>
         <h3>contact details</h3>
         <ul>
