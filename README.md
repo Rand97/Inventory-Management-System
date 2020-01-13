@@ -18,5 +18,12 @@
             <li>migrate files using php artisan migrate</li>
             <li>run the project on your browser</li>
         </ul>
+        <h3>Features</h3><br><br>
+        <h3>contact details</h3>
+        <ul>
+            <li>nuwan.harshamatrix@gmail.com</li>
+            <li>erandana wijerathna@gmail.com</li>
+            <li>sm201211d@gmail.com</li>
+        </ul>
     </body>
 </html>
