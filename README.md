@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
         
     </head>
     <body>
@@ -30,14 +30,14 @@
             <li>Admin and User Access</li>
             <li>Add item , Delete Item or UpdateItem features</li>
         </ul>
-        <div class="imagesSection">
+        <div>
             <div class="image">
                 <img src = "screenshots/Screenshot (75).png">
             </div><hr>
             <div class="image">
                 <img src = "screenshots/Screenshot (76).png">
             </div><hr>
-            <div class=">
+            <div class="image">
                 <img src = "screenshots/Screenshot (77).png">
             </div><hr>
             <div class="image">
