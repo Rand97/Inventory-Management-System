@@ -1,7 +1,9 @@
 <html>
     <head>
-        
-        
+        .image {
+            float: left;
+            display:inline-block;
+        }
     </head>
     <body>
         <h1>Inventory Management System</h1>
@@ -30,7 +32,7 @@
             <li>Admin and User Access</li>
             <li>Add item , Delete Item or UpdateItem features</li>
         </ul>
-        <div>
+        <div class="imagesSection" style="inline-block">
             <div class="image">
                 <img src = "screenshots/Screenshot (75).png">
             </div><hr>
