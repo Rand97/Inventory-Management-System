@@ -6,7 +6,7 @@
         <br>
         <h3>What is this repository for?</h3>
         <ul>
-            <li>Avalilable items section</li>
+            <li>Inventory Management System for a Electonic Shop. </li>
             <li>version 1.0</li>
         </ul><br>
         <h3>How do I get set up?</h3>
